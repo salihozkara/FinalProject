@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using DataAccess.Abstract;
 using Entities.Concrete;
+using Entities.DTOs;
 
 namespace DataAccess.Concrete.InMemory
 {
@@ -27,29 +29,44 @@ namespace DataAccess.Concrete.InMemory
             return _products;
         }
 
-        public void Add(Product product)
+        public List<Product> GetAll(Expression<Func<Product, bool>> filter = null)
         {
-            _products.Add(product);
+            throw new NotImplementedException();
         }
 
-        public void Update(Product product)
+        public Product Get(Expression<Func<Product, bool>> filter)
         {
-            Product productToUpdate = _products.SingleOrDefault(p => p.ProductId == product.ProductId);
-            productToUpdate.CategoryId = product.CategoryId;
-            productToUpdate.UnitsInStock = product.UnitsInStock;
-            productToUpdate.ProductName = product.ProductName;
-            productToUpdate.UnitPrice = product.UnitPrice;
+            throw new NotImplementedException();
         }
 
-        public void Delete(Product product)
+        public void Add(Product category)
         {
-            Product productToDelete = _products.SingleOrDefault(p=>p.ProductId==product.ProductId);
-            _products.Remove(productToDelete);
+            _products.Add(category);
+        }
+
+        public void Update(Product category)
+        {
+            Product categoryToUpdate = _products.SingleOrDefault(p => p.ProductId == category.ProductId);
+            categoryToUpdate.CategoryId = category.CategoryId;
+            categoryToUpdate.UnitsInStock = category.UnitsInStock;
+            categoryToUpdate.ProductName = category.ProductName;
+            categoryToUpdate.UnitPrice = category.UnitPrice;
+        }
+
+        public void Delete(Product category)
+        {
+            Product categoryToDelete = _products.SingleOrDefault(p=>p.ProductId==category.ProductId);
+            _products.Remove(categoryToDelete);
         }
 
         public List<Product> GetAllByCategory(int categoryId)
         {
            return _products.Where(p => p.CategoryId == categoryId).ToList();
+        }
+
+        public List<ProductDetailDto> GetProductsDetails()
+        {
+            throw new NotImplementedException();
         }
     }
 }
