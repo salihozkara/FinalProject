@@ -9,6 +9,6 @@ namespace DataAccess.Abstract
 {
     public interface IProductDal:IEntityRepository<Product>
     {
-        List<ProductDetailDto> GetProductsDetails();
+        List<ProductDetailDto> GetProductDetails();
     }
 }
