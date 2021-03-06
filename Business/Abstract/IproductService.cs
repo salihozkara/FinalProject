@@ -7,7 +7,7 @@ using Entities.DTOs;
 
 namespace Business.Abstract
 {
-    public interface IproductService
+    public interface IProductService
     {
         IDataResult<List<Product>> GetAll();
         IDataResult<List<Product>> GetAllByCategoryId(int id);
@@ -16,5 +16,6 @@ namespace Business.Abstract
         IDataResult<Product> GetById(int productId);
         IResult Add(Product product);
         IResult Update(Product product);
+        IResult AddTransactionalTest(Product product);
     }
 }
